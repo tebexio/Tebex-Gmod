@@ -12,7 +12,9 @@ if not Tebex then
 	Msg( "// Loading...                //\n" )
 
 --	include( "tebex/commands/info.lua" )
-	include( "tebex/models/config.lua")
+	include( "tebex/models/config.lua" )
+
+	include( "tebex/commands/info.lua" )
 	Msg( "///////////////////////////////\n\n" )
 
 	config = TebexConfig:init()
@@ -23,49 +25,9 @@ if not Tebex then
 
 	Msg( "Buy command is " .. config:get("buyCommand") .. "\n")
 
+--game.ConsoleCommand( string stringCommand )
+
 --[[
-	AddCSLuaFile( "ulib/cl_init.lua" )
-	AddCSLuaFile( "autorun/ulib_init.lua" )
-	local folder = "ulib/shared"
-	local files = file.Find( folder .. "/" .. "*.lua", "LUA" )
-	for _, file in ipairs( files ) do
-		AddCSLuaFile( folder .. "/" .. file )
-	end
-
-	folder = "ulib/client"
-	files = file.Find( folder .. "/" .. "*.lua", "LUA" )
-	for _, file in ipairs( files ) do
-		AddCSLuaFile( folder .. "/" .. file )
-	end
-
-	--Shared modules
-	local files = file.Find( "ulib/modules/*.lua", "LUA" )
-	if #files > 0 then
-		for _, file in ipairs( files ) do
-			Msg( "[ULIB] Loading SHARED module: " .. file .. "\n" )
-			include( "ulib/modules/" .. file )
-			AddCSLuaFile( "ulib/modules/" .. file )
-		end
-	end
-
-	--Server modules
-	local files = file.Find( "ulib/modules/server/*.lua", "LUA" )
-	if #files > 0 then
-		for _, file in ipairs( files ) do
-			Msg( "[ULIB] Loading SERVER module: " .. file .. "\n" )
-			include( "ulib/modules/server/" .. file )
-		end
-	end
-
-	--Client modules
-	local files = file.Find( "ulib/modules/client/*.lua", "LUA" )
-	if #files > 0 then
-		for _, file in ipairs( files ) do
-			Msg( "[ULIB] Loading CLIENT module: " .. file .. "\n" )
-			AddCSLuaFile( "ulib/modules/client/" .. file )
-		end
-	end
-
 	local function clReady( ply )
 		ply.ulib_ready = true
 		hook.Call( ULib.HOOK_LOCALPLAYERREADY, _, ply )
