@@ -11,8 +11,6 @@ function TebexApiClient:init(baseUrl, secret, timeout)
     apiclient.baseUrl = baseUrl
     apiclient.secret = secret;
 
-    print (apiclient.baseUrl)
-
     if (timeout == nil) then
         timeout = 5000
     end
@@ -24,13 +22,12 @@ function TebexApiClient:init(baseUrl, secret, timeout)
 end
 
 function TebexApiClient:get(endpoint, success, failure)
-    print( self.baseUrl .. endpoint )
     HTTP(
         {
             failed = failure,
             success = success,
             method = "GET",
-            url = self.plugin.config.get("baseUrl") .. endpoint,
+            url = self.baseUrl .. endpoint,
             headers = {
                 ['X-Buycraft-Secret'] = self.plugin.config.get("secret")
             }
