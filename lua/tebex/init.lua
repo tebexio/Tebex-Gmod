@@ -24,7 +24,7 @@ if not Tebex then
 	Msg( "///////////////////////////////\n" )
 	Msg( "// Loading...                //\n" )
 
---	include( "tebex/commands/info.lua" )
+	include( "tebex/client/apiclient.lua" )
 	include( "tebex/models/config.lua" )
 
 	include( "tebex/commands/info.lua" )
