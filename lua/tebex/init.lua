@@ -38,7 +38,7 @@ if not Tebex then
 
 	config = TebexConfig:init()
 
-	if (config.get("secret") == "") then
+	if (config:get("secret") == "") then
 		Tebex.err( "You have not yet defined your secret key. Use tebex:secret <secret> to define your key" )
 	else
 		Tebex.commands["info"](nil, {":", "info"})
