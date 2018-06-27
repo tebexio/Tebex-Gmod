@@ -22,4 +22,6 @@ Tebex.commands["secret"] = function(ply, args)
     end, function(body)
         Tebex.err (body["error_message"])
     end)
+
+    apiclient = nil
 end
