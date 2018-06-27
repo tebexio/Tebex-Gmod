@@ -10,7 +10,7 @@ function TebexApiClient:init(plugin, timeout)
 
     apiclient.plugin = plugin
 
-    print (aplclient.plugin.config.get("baseUrl"))
+    print (apiclient.plugin.config.get("baseUrl"))
 
     if (timeout == nil) then
         timeout = 5000
