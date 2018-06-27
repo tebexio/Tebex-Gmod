@@ -38,28 +38,6 @@ if not Tebex then
 
 	config = TebexConfig:init()
 
-	if (config:get("secret") == "") then
-		Tebex.err( "You have not yet defined your secret key. Use tebex:secret <secret> to define your key" )
-	else
-		Tebex.commands["info"](nil, {":", "info"})
-	end
-
-	function doCheck()
-		if ((os.time() - Tebex.lastCalled) > Tebex.nextCheck) then
-			Tebex.lastCalled = os.time()
-			print ( "do check" );
-		else
-			print ( "zzz...." )
-		end
-	end
-
-
-	hook.Add( "Initialize", "Timer Example", function()
-		print ( "start timer" )
-		timer.Create( "checker", 30, 0, doCheck )
-	end )
-
-
 	concommand.Add("tebex", function(ply, cmd, args)
 
 		if (args[2] == nil) then
@@ -75,6 +53,32 @@ if not Tebex then
 		Tebex.commands[args[2]](ply,args);
 
 	end)
+
+
+	Tebex.doCheck = function ()
+		print ( "timer?" )
+		if ((os.time() - Tebex.lastCalled) > Tebex.nextCheck) then
+			Tebex.lastCalled = os.time()
+			print ( "do check" );
+		else
+			print ( "zzz...." )
+		end
+	end
+
+
+	hook.Add( "Initialize", "StartUp", function()
+		if (config:get("secret") == "") then
+			Tebex.err( "You have not yet defined your secret key. Use tebex:secret <secret> to define your key" )
+		else
+			Tebex.commands["info"](nil, {":", "info"})
+		end
+
+
+		print ( "start timer" )
+		timer.Create( "checker", 30, 0, Tebex.doCheck() )
+	end )
+
+
 --game.ConsoleCommand( string stringCommand )
 
 --[[
