@@ -42,3 +42,9 @@ function TebexConfig:get(key)
 
     return self.cfg[key]
 end
+
+function TebexConfig:set(key, value)
+    self.cfg[key] = value
+    configJson = util.TableToJSON(self)
+    file.Write("tebex/config.txt", configJson)
+end
