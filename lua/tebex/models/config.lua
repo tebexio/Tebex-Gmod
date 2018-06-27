@@ -16,10 +16,10 @@ function TebexConfig:init()
 
         configJson = util.TableToJSON(config)
 
-        file.Write("tebex/config", configJson)
+        file.Write("tebex/config.txt", configJson)
 
     else
-        configJson = file.Read("tebex/config")
+        configJson = file.Read("tebex/config.txt")
         config = util.JSONToTable(configJson)
 
         print( "Config Loaded" )
