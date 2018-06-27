@@ -24,8 +24,17 @@ end
 function TebexApiClient:get(endpoint, success, failure)
     HTTP(
         {
-            failed = failure,
-            success = success,
+            failed = function (msg)
+                Tebex.err("There was a problem sending this request. Please try again")
+            end,
+            success = function (code, body)
+                tBody = util.JSONToTable(body)
+                if (code == 200 or code == 204) then
+                    success(tBody)
+                    return
+                end
+                failure(tBody)
+            end,
             method = "GET",
             url = self.baseUrl .. endpoint,
             headers = {
