@@ -1,3 +1,5 @@
+Msg( "// Config Library 0.1       //\n" )
+
 TebexConfig = {}
 TebexConfig.__index = TebexConfig
 
@@ -28,4 +30,12 @@ function TebexConfig:init()
 
     return config
 
+end
+
+function TebexConfig:get(key)
+    if (self.config[key] == nil) then
+        return false
+    end
+
+    return self.config[key]
 end

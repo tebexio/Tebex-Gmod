@@ -5,7 +5,7 @@ if not Tebex then
 
 	file.CreateDir( "tebex" )
 
-	Msg( "///////////////////////////////\n" )
+	Msg( "\n///////////////////////////////\n" )
 	Msg( "//      TebexGmod v 0.1      //\n" )
 	Msg( "//   https://www.tebex.io/   //\n" )
 	Msg( "///////////////////////////////\n" )
@@ -13,9 +13,11 @@ if not Tebex then
 
 --	include( "tebex/commands/info.lua" )
 	include( "tebex/models/config.lua")
-	Msg( "///////////////////////////////\n" )
+	Msg( "///////////////////////////////\n\n" )
 
 	config = TebexConfig:init()
+
+	Msg( "Buy command is " .. config:get("buyCommand") )
 
 --[[
 	AddCSLuaFile( "ulib/cl_init.lua" )
