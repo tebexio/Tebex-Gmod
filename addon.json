@@ -1,0 +1,14 @@
+{
+	"title"		:	"TebexGmod",
+	"type"		:	"ServerContent",
+	"tags"		:	[ "donation", "monetization" ],
+	"ignore"	:
+	[
+		"addon.txt",
+		".git*",
+		"README.md",
+		"LICENSE.md",
+		"CONTRIBUTING.md",
+	],
+	"workshopid": 0
+}
