@@ -6,6 +6,8 @@ TebexApiClient.__index = TebexApiClient
 function TebexApiClient:init(plugin, timeout)
     local apiclient = {}
 
+    setmetatable(apiclient,TebexApiClient)
+
     apiclient.plugin = plugin
 
     if (timeout == nil) then
@@ -13,8 +15,6 @@ function TebexApiClient:init(plugin, timeout)
     end
 
     apiclient.timeout = timeout
-
-    setmetatable(apiclient,TebexApiClient)
 
     return apiclient
 
