@@ -9,6 +9,6 @@ Tebex.commands["secret"] = function(ply, args)
     config:set("secret", args[3])
     apiclient = TebexApiClient:init(config:get("baseUrl"), config:get("secret"))
     apiclient:get("/info", function(code, body)
-        print (string)
+        print (body)
     end)
 end
