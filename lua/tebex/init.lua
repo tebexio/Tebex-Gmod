@@ -2,6 +2,18 @@ if not Tebex then
 	Tebex = {}
 	Tebex.commands = {}
 
+	Tebex.warn = function ( msg )
+		MsgC( Color( 255, 255, 0 ), msg )
+	end
+
+	Tebex.err = function ( msg )
+		MsgC( Color( 255, 0, 0 ), msg )
+	end
+
+	Tebex.ok = function ( msg )
+		MsgC( Color( 0, 255, 0 ), msg )
+	end
+
 	if not Tebex.consoleCommand then Tebex.consoleCommand = game.ConsoleCommand end
 
 	file.CreateDir( "tebex" )
@@ -18,7 +30,8 @@ if not Tebex then
 	include( "tebex/commands/info.lua" )
 	Msg( "///////////////////////////////\n\n" )
 
-	config = TebexConfig:init()
+	Tebex.config = TebexConfig:init()
+	Tebex.apiclient = TebexApiClient:init(Tebex)
 
 
 	concommand.Add("tebex", function(ply, cmd, args)
