@@ -3,15 +3,15 @@ if not Tebex then
 	Tebex.commands = {}
 
 	Tebex.warn = function ( msg )
-		Msg (msg)
+		print (msg)
 	end
 
 	Tebex.err = function ( msg )
-		Msg (msg)
+		print (msg)
 	end
 
 	Tebex.ok = function ( msg )
-		Msg (msg)
+		print (msg)
 	end
 
 	if not Tebex.consoleCommand then Tebex.consoleCommand = game.ConsoleCommand end
