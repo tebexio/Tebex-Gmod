@@ -27,6 +27,7 @@ if not Tebex then
 	include( "tebex/client/apiclient.lua" )
 	include( "tebex/models/config.lua" )
 
+	include( "tebex/commands/secret.lua" )
 	include( "tebex/commands/info.lua" )
 	Msg( "///////////////////////////////\n\n" )
 
