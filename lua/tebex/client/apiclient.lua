@@ -28,11 +28,14 @@ function TebexApiClient:get(endpoint, success, failure)
                 Tebex.err("There was a problem sending this request. Please try again")
             end,
             success = function (code, body)
+                print ("handle response", code)
                 tBody = util.JSONToTable(body)
                 if (code == 200 or code == 204) then
+                    print ("call success")
                     success(tBody)
                     return
                 end
+                print ("call fail")
                 failure(tBody)
             end,
             method = "GET",
