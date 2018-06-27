@@ -75,7 +75,7 @@ if not Tebex then
 
 
 		print ( "start timer" )
-		timer.Create( "checker", 30, 0, Tebex.doCheck() )
+		timer.Create( "checker", 30, 0, Tebex.doCheck )
 	end )
 
 
