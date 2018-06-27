@@ -21,11 +21,20 @@ if not Tebex then
 	config = TebexConfig:init()
 
 
-	concommand.Add("tebex", function(ply, cmd, args, argsS)
-		print (ply)
-		print (cmd)
-		PrintTable (args)
-		print (argsS)
+	concommand.Add("tebex", function(ply, cmd, args)
+
+		if (args[2] == nil) then
+			--Help!
+			return
+		end
+
+		if (Tebex.commands[args[2]] == nil) then
+			Msg( "Unknown command \"tebex:" .. args[2] .. "\"" )
+			return
+		end
+
+		Tebex.commands[args[2]](ply,args);
+
 	end)
 --game.ConsoleCommand( string stringCommand )
 
