@@ -53,7 +53,11 @@ if not Tebex then
 		end
 	end
 
-	timer.Create( "checker", 30, 0, doCheck )
+
+	hook.Add( "Initialize", "Timer Example", function()
+		print ( "start timer" )
+		timer.Create( "checker", 30, 0, doCheck )
+	end )
 
 
 	concommand.Add("tebex", function(ply, cmd, args)
