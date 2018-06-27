@@ -1,4 +1,4 @@
-Msg( "// Config Library 0.1       //\n" )
+Msg( "// Config Library 0.1        //\n" )
 
 TebexConfig = {}
 TebexConfig.__index = TebexConfig
@@ -12,7 +12,7 @@ function TebexConfig:init()
             baseUrl = "https://plugin.buycraft.net"
         }
     }
-    setmetatable(config,TebexConfig)
+
 
     if (file.Exists("tebex/config.txt", "DATA") == false) then
        print ( "No config exists, create" )
@@ -28,6 +28,8 @@ function TebexConfig:init()
         print( "Config Loaded" )
 
     end
+
+    setmetatable(config,TebexConfig)
 
     return config
 

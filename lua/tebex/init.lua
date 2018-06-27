@@ -17,7 +17,7 @@ if not Tebex then
 
 	config = TebexConfig:init()
 
-	Msg( "Buy command is " .. config:get("buyCommand") )
+	Msg( "Buy command is " .. config:get("buyCommand") .. "\n")
 
 --[[
 	AddCSLuaFile( "ulib/cl_init.lua" )
