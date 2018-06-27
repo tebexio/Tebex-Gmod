@@ -19,7 +19,7 @@ if not Tebex then
 
 	Msg( "Buy command is " .. config:get("buyCommand") .. "\n")
 
-	TebexConfig:set("buyCommand", "!buynow")
+	config:set("buyCommand", "!buynow")
 
 	Msg( "Buy command is " .. config:get("buyCommand") .. "\n")
 
