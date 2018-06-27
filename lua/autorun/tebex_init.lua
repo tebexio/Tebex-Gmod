@@ -1,6 +1,6 @@
 -- Short and sweet
 if SERVER then
-	include( "ulib/init.lua" )
+	include( "tebex/init.lua" )
 else
-	include( "ulib/noclient.lua" )
+	include( "tebex/noclient.lua" )
 end
