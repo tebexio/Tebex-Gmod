@@ -1,5 +1,6 @@
 if not Tebex then
 	Tebex = {}
+	Tebex.commands = {}
 
 	if not Tebex.consoleCommand then Tebex.consoleCommand = game.ConsoleCommand end
 
@@ -19,12 +20,12 @@ if not Tebex then
 
 	config = TebexConfig:init()
 
-	Msg( "Buy command is " .. config:get("buyCommand") .. "\n")
 
-	config:set("buyCommand", "!buynow")
-
-	Msg( "Buy command is " .. config:get("buyCommand") .. "\n")
-
+	concommand.Add("tebex", function(ply, cmd, args)
+		print (ply)
+		print (cmd)
+		print (args[0])
+	end)
 --game.ConsoleCommand( string stringCommand )
 
 --[[
