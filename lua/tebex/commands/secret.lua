@@ -11,7 +11,6 @@ Tebex.commands["secret"] = function(ply, args)
     apiclient:get("/information", function(body)
         print ("ok")
     end, function(body)
-        print("error")
         Tebex.err (body["error_message"])
     end)
 end

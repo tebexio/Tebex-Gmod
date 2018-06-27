@@ -3,16 +3,15 @@ if not Tebex then
 	Tebex.commands = {}
 
 	Tebex.warn = function ( msg )
-		MsgC( Color( 255, 255, 0 ), msg )
+		Msg (msg)
 	end
 
 	Tebex.err = function ( msg )
-		print (msg)
-		MsgC( Color( 255, 0, 0 ), msg )
+		Msg (msg)
 	end
 
 	Tebex.ok = function ( msg )
-		MsgC( Color( 0, 255, 0 ), msg )
+		Msg (msg)
 	end
 
 	if not Tebex.consoleCommand then Tebex.consoleCommand = game.ConsoleCommand end
