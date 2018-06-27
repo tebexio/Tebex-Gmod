@@ -5,15 +5,16 @@ TebexConfig.__index = TebexConfig
 
 function TebexConfig:init()
     local config = {
-        buyEnabled = false,
-        secret = "",
-        buyCommand = "!donate",
-        baseUrl = "https://plugin.buycraft.net"
-
+        cfg = {
+            buyEnabled = false,
+            secret = "",
+            buyCommand = "!donate",
+            baseUrl = "https://plugin.buycraft.net"
+        }
     }
     setmetatable(config,TebexConfig)
 
-    if (file.Exists("tebex/config", "DATA") == false) then
+    if (file.Exists("tebex/config.txt", "DATA") == false) then
        print ( "No config exists, create" )
 
         configJson = util.TableToJSON(config)
@@ -33,9 +34,9 @@ function TebexConfig:init()
 end
 
 function TebexConfig:get(key)
-    if (self.config[key] == nil) then
+    if (self.cfg[key] == nil) then
         return false
     end
 
-    return self.config[key]
+    return self.cfg[key]
 end
