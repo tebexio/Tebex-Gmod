@@ -2,6 +2,9 @@ if not Tebex then
 	Tebex = {}
 	Tebex.commands = {}
 
+	Tebex.nextCheck = 15 * 60
+	Tebex.lastCalled = os.time() - 14 * 60
+
 	Tebex.warn = function ( msg )
 		print (msg)
 	end
@@ -34,6 +37,23 @@ if not Tebex then
 	Msg( "///////////////////////////////\n\n" )
 
 	config = TebexConfig:init()
+
+	if (config.get("secret") == "") then
+		Tebex.err( "You have not yet defined your secret key. Use tebex:secret <secret> to define your key" )
+	else
+		Tebex.commands["info"](nil, {":", "info"})
+	end
+
+	function doCheck()
+		if ((os.time() - Tebex.lastCalled) > Tebex.nextCheck) then
+			Tebex.lastCalled = os.time()
+			print ( "do check" );
+		else
+			print ( "zzz...." )
+		end
+	end
+
+	timer.Create( "checker", 30, 0, doCheck )
 
 
 	concommand.Add("tebex", function(ply, cmd, args)
