@@ -13,6 +13,7 @@ Tebex.commands["secret"] = function(ply, args)
         print (body)
     end, function(body)
         print("error")
+        print (body["error_message"])
         Tebex.err (body["error_message"])
     end)
 end
