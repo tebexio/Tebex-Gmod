@@ -30,7 +30,7 @@ if not Tebex then
 	include( "tebex/commands/secret.lua" )
 	include( "tebex/commands/info.lua" )
 
-	include( "tebex/models/information,lua" )
+	include( "tebex/models/information.lua" )
 	Msg( "///////////////////////////////\n\n" )
 
 	config = TebexConfig:init()
