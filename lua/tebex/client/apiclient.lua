@@ -3,14 +3,15 @@ Msg( "// API Client 0.1            //\n" )
 TebexApiClient = {}
 TebexApiClient.__index = TebexApiClient
 
-function TebexApiClient:init(plugin, timeout)
+function TebexApiClient:init(baseUrl, secret, timeout)
     local apiclient = {}
 
     setmetatable(apiclient,TebexApiClient)
 
-    apiclient.plugin = plugin
+    apiclient.baseUrl = baseUrl
+    apiclient.secret = secret;
 
-    print (apiclient.plugin.config.get("baseUrl"))
+    print (apiclient.baseUrl)
 
     if (timeout == nil) then
         timeout = 5000
@@ -23,8 +24,7 @@ function TebexApiClient:init(plugin, timeout)
 end
 
 function TebexApiClient:get(endpoint, success, failure)
-    print( self.plugin.config.get("baseUrl") .. endpoint )
-    print( self.plugin.config.get("secret") )
+    print( self.baseUrl .. endpoint )
     HTTP(
         {
             failed = failure,

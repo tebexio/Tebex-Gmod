@@ -31,8 +31,7 @@ if not Tebex then
 	include( "tebex/commands/info.lua" )
 	Msg( "///////////////////////////////\n\n" )
 
-	Tebex.config = TebexConfig:init()
-	Tebex.apiclient = TebexApiClient:init(Tebex)
+	config = TebexConfig:init()
 
 
 	concommand.Add("tebex", function(ply, cmd, args)
