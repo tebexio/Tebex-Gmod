@@ -7,6 +7,7 @@ if not Tebex then
 	end
 
 	Tebex.err = function ( msg )
+		print (msg)
 		MsgC( Color( 255, 0, 0 ), msg )
 	end
 
