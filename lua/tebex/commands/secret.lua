@@ -18,7 +18,7 @@ Tebex.commands["secret"] = function(ply, args)
         TebexInformation.serverId = response["server"]["id"]
         TebexInformation.serverName = response["server"]["name"]
 
-        Tebex.logWarning("Your secret key has been validated! Webstore Name: " .. TebexInformation.name);
+        Tebex.ok("Your secret key has been validated! Webstore Name: " .. TebexInformation.name);
     end, function(body)
         Tebex.err (body["error_message"])
     end)
