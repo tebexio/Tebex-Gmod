@@ -29,7 +29,7 @@ function TebexApiClient:get(endpoint, success, failure)
             method = "GET",
             url = self.baseUrl .. endpoint,
             headers = {
-                ['X-Buycraft-Secret'] = self.plugin.config.get("secret")
+                ['X-Buycraft-Secret'] = apiclient.secret
             }
         }
     )
