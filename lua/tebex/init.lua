@@ -21,10 +21,11 @@ if not Tebex then
 	config = TebexConfig:init()
 
 
-	concommand.Add("tebex", function(ply, cmd, args)
+	concommand.Add("tebex", function(ply, cmd, args, argsS)
 		print (ply)
 		print (cmd)
-		print (args[0])
+		PrintTable (args)
+		print (argsS)
 	end)
 --game.ConsoleCommand( string stringCommand )
 
