@@ -32,6 +32,7 @@ if not Tebex then
 
 	include( "tebex/commands/secret.lua" )
 	include( "tebex/commands/info.lua" )
+	include( "tebex/commands/forcecheck.lua" )
 
 	include( "tebex/models/information.lua" )
 	Msg( "///////////////////////////////\n\n" )
@@ -56,12 +57,9 @@ if not Tebex then
 
 
 	Tebex.doCheck = function ()
-		print ( "timer?" )
 		if ((os.time() - Tebex.lastCalled) > Tebex.nextCheck) then
 			Tebex.lastCalled = os.time()
 			print ( "do check" );
-		else
-			print ( "zzz...." )
 		end
 	end
 
@@ -73,35 +71,8 @@ if not Tebex then
 			Tebex.commands["info"](nil, {":", "info"})
 		end
 
-
-		print ( "start timer" )
-		timer.Create( "checker", 30, 0, Tebex.doCheck )
+		timer.Create( "checker", 10, 0, Tebex.doCheck )
+		timer.Start("checker")
 	end )
 
-
-	local function PrintSomething( text )
-		print( text )
-	end
-
-	local function PrintNoArguments()
-		print( "fun with timers!" )
-	end
-
-	local function CreateSomeTimers()
-		timer.Create( "UniqueName1", 1, 1, function() print( "inside" ) end )
-		timer.Create( "UniqueName2", 2, 0, function() PrintSomething( "outside" ) end )
-		timer.Create( "UniqueName3", 5, 1, PrintNoArguments )
-	end
-	hook.Add( "Initialize", "Timer Example", CreateSomeTimers )
-
-
---game.ConsoleCommand( string stringCommand )
-
---[[
-	local function clReady( ply )
-		ply.ulib_ready = true
-		hook.Call( ULib.HOOK_LOCALPLAYERREADY, _, ply )
-	end
-	concommand.Add( "ulib_cl_ready", clReady ) -- Called when the c-side player object is ready
---]]
 end
