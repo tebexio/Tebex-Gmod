@@ -43,3 +43,26 @@ function TebexApiClient:get(endpoint, success, failure)
         }
     )
 end
+
+function TebexApiClient:delete(endpoint, success, failure)
+    HTTP(
+        {
+            failed = function (msg)
+                Tebex.err("There was a problem sending this request. Please try again")
+            end,
+            success = function (code, body)
+                tBody = util.JSONToTable(body)
+                if (code == 200 or code == 204) then
+                    success(tBody)
+                    return
+                end
+                failure(tBody)
+            end,
+            method = "DELETE",
+            url = self.baseUrl .. endpoint,
+            headers = {
+                ['X-Buycraft-Secret'] = apiclient.secret
+            }
+        }
+    )
+end
