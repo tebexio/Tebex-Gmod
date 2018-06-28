@@ -35,6 +35,7 @@ if not Tebex then
 	include( "tebex/commands/forcecheck.lua" )
 
 	include( "tebex/models/information.lua" )
+	include( "tebex/models/commandrunner.lua" )
 	Msg( "///////////////////////////////\n\n" )
 
 	config = TebexConfig:init()
