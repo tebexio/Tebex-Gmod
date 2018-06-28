@@ -82,6 +82,7 @@ TebexCommandRunner.deleteCommands = function(commandIds)
     amp = ""
     for key,commandId in pairs(commandIds) do
         endpoint = endpoint .. amp .. "ids[]=" .. commandId;
+        amp = "&"
     end
 
     apiclient = TebexApiClient:init(config:get("baseUrl"), config:get("secret"))
