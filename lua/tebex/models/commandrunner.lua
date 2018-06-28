@@ -87,7 +87,7 @@ TebexCommandRunner.deleteCommands = function(commandIds)
     apiclient = TebexApiClient:init(config:get("baseUrl"), config:get("secret"))
     apiclient:delete(endpoint, function(response)
     end, function(body)
-        print (body)
+        print (body["error_code"] .. " " .. body["error_message"])
     end)
     apiclient = nil
 end
