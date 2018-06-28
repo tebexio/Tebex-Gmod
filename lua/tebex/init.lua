@@ -70,6 +70,7 @@ if not Tebex then
 		if (config:get("secret") == "") then
 			Tebex.err( "You have not yet defined your secret key. Use tebex:secret <secret> to define your key" )
 		else
+			Tebex.ok("Starting Tebex_Gmod 0.1")
 			Tebex.commands["info"](nil, {":", "info"})
 		end
 
