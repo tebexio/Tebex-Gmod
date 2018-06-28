@@ -36,6 +36,7 @@ if not Tebex then
 
 	include( "tebex/models/information.lua" )
 	include( "tebex/models/commandrunner.lua" )
+	include( "tebex/models/buycommand.lua" )
 	Msg( "///////////////////////////////\n\n" )
 
 	config = TebexConfig:init()
@@ -69,7 +70,11 @@ if not Tebex then
 		if (config:get("secret") == "") then
 			Tebex.err( "You have not yet defined your secret key. Use tebex:secret <secret> to define your key" )
 		else
-			Tebex.commands["info"](nil, {":", "info"})
+			Tebex.ok("Starting Tebex_Gmod 0.1")
+			timer.Simple(5, function()
+				Tebex.commands["info"](nil, {":", "info"})
+			end)
+
 		end
 
 		timer.Create( "checker", 10, 0, Tebex.doCheck )
