@@ -30,6 +30,8 @@ TebexCommandRunner.doOfflineCommands = function()
             TebexCommandRunner.deleteCommands(executedCommands)
             executedCommands = {}
         end
+    end, function(body)
+        print (body["error_code"] .. " " .. body["error_message"])
     end)
     apiclient = nil
 
@@ -63,6 +65,8 @@ TebexCommandRunner.doOnlineCommands = function(playerPluginId, playerName, playe
             TebexCommandRunner.deleteCommands(executedCommands)
             executedCommands = {}
         end
+    end, function(body)
+        print (body["error_code"] .. " " .. body["error_message"])
     end)
 
     apiclient = nil
