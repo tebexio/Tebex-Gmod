@@ -1,0 +1,8 @@
+Msg( "// Buy Command v0.1          //\n" )
+
+hook.Add( "PlayerSay", "BuyCommand", function( ply, text, public )
+    if ( string.lower( string.trim(text) ) == config:get("buyCommand") ) then
+        ply:ChatPrint( "To buy packages from our webstore, please visit: " .. TebexInformation.domain )
+        return ""
+    end
+end )
