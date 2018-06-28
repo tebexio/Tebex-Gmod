@@ -81,12 +81,11 @@ if not Tebex then
 
 	hook.Add( "InitPostEntity", "DoInfo", function()
 		if (config:get("secret") ~= "") then
-			local clock = os.clock
-
-			local t0 = clock()
-			while clock() - t0 <= 20 do end
-
-			Tebex.commands["info"](nil, {":", "info"})
+			coroutine.create(function()
+				coroutine.wait(5)
+				print ( "DO INFO?" )
+				Tebex.commands["info"](nil, {":", "info"})
+			end)
 		end
 	end)
 
