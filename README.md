@@ -16,3 +16,6 @@ Please don't raise support issues on this repo. For support with the plugin or a
 
 We welcome contributions from the community. Please refer to the CONTRIBUTING.md file for more details. By submitting code to us, you agree to the
 terms set out in the CONTRIBUTING.md file
+
+## Installation
+We recommend downloading the latest build from your Tebex Control Panel. If you wish to use the git verson, the entire contents of the repository should be downloaded into a directory inside your server garrysmod/addons/ directory
