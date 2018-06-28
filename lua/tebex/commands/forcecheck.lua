@@ -20,7 +20,7 @@ Tebex.commands["forcecheck"] = function(ply, args)
             steamId = plr["uuid"]
             targetPlayer = player.GetBySteamID64(steamId)
 
-            if (targetPlayer and targetPlayer:isFullyAuthenticated()) then
+            if (targetPlayer and targetPlayer:IsFullyAuthenticated()) then
                 Tebex.warn("Execute commands for " .. targetPlayer:name() .. "(ID: "+targetPlayer:SteamID64() .. ")");
                 TebexCommandRunner.doOnlineCommands(plr["id"], targetPlayer:name(), targetPlayer.SteamID64());
             end
