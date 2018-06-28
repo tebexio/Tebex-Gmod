@@ -38,7 +38,7 @@ TebexCommandRunner.buildCommand = function(cmd, username, id)
     cmd = cmd:gsub("{id}", id);
     cmd = cmd:gsub("{username}", username);
 
-    return cmd;
+    return cmd .. "\n";
 end
 
 TebexCommandRunner.deleteCommands = function(commandIds)
