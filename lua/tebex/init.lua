@@ -60,7 +60,7 @@ if not Tebex then
 	Tebex.doCheck = function ()
 		if ((os.time() - Tebex.lastCalled) > Tebex.nextCheck) then
 			Tebex.lastCalled = os.time()
-			print ( "do check" );
+			Tebex.commands["forcecheck"](nil, {":", "forcecheck"})
 		end
 	end
 
