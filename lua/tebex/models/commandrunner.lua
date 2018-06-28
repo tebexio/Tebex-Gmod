@@ -31,8 +31,44 @@ TebexCommandRunner.doOfflineCommands = function()
             executedCommands = {}
         end
     end)
+    apiclient = nil
 
 end
+
+TebexCommandRunner.doOnlineCommands = function(playerPluginId, playerName, playerId)
+    Tebex.warn("Running online commands for " .. playerName .. " (" .. playerId .. ")");
+    apiclient = TebexApiClient:init(config:get("baseUrl"), config:get("secret"))
+    apiclient:get("/queue/online-commands/" .. playerPluginId, function(response)
+        commands = response.commands
+        exCount = 0
+        executedCommands = {}
+
+        for key,cmd in pairs(commands) do
+            commandToRun = TebexCommandRunner.buildCommand(cmd["command"], playerName, playerId)
+
+            Tebex.warn("Run command " .. commandToRun)
+            game.ConsoleCommand( commandToRun )
+
+            table.insert(executedCommands, cmd["id"])
+            exCount = exCount + 1
+
+            if (exCount % TebexCommandRunner.deleteAfter == 0) then
+                TebexCommandRunner.deleteCommands(executedCommands)
+                executedCommands = {}
+            end
+        end
+
+        Tebex.ok(exCount .. " online commands executed for " .. playerName)
+        if (exCount % TebexCommandRunner.deleteAfter > 0) then
+            TebexCommandRunner.deleteCommands(executedCommands)
+            executedCommands = {}
+        end
+    end)
+
+    apiclient = nil
+
+end
+
 
 TebexCommandRunner.buildCommand = function(cmd, username, id)
     cmd = cmd:gsub("{id}", id);
@@ -50,6 +86,6 @@ TebexCommandRunner.deleteCommands = function(commandIds)
 
     apiclient = TebexApiClient:init(config:get("baseUrl"), config:get("secret"))
     apiclient:delete(endpoint, function(response)
-        Tebex.ok( "Commands deleted" )
     end)
+    apiclient = nil
 end
