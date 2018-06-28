@@ -36,6 +36,7 @@ if not Tebex then
 
 	include( "tebex/models/information.lua" )
 	include( "tebex/models/commandrunner.lua" )
+	include( "tebex/models/buycommand.lua" )
 	Msg( "///////////////////////////////\n\n" )
 
 	config = TebexConfig:init()
