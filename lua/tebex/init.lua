@@ -71,14 +71,18 @@ if not Tebex then
 			Tebex.err( "You have not yet defined your secret key. Use tebex:secret <secret> to define your key" )
 		else
 			Tebex.ok("Starting Tebex_Gmod 0.1")
-			timer.Simple(5, function()
-				Tebex.commands["info"](nil, {":", "info"})
-			end)
+			Tebex.commands["info"](nil, {":", "info"})
 
 		end
 
 		timer.Create( "checker", 10, 0, Tebex.doCheck )
 		timer.Start("checker")
 	end )
+
+	hook.Add( "InitPostEntity", "DoInfo", function()
+		if (config:get("secret") ~= "") then
+			Tebex.commands["info"](nil, {":", "info"})
+		end
+	end)
 
 end
