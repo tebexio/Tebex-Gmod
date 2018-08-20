@@ -22,7 +22,7 @@ if not Tebex then
 	file.CreateDir( "tebex" )
 
 	Msg( "\n///////////////////////////////\n" )
-	Msg( "//      TebexGmod v 0.1      //\n" )
+	Msg( "//      TebexGmod v 0.2      //\n" )
 	Msg( "//   https://www.tebex.io/   //\n" )
 	Msg( "///////////////////////////////\n" )
 	Msg( "// Loading...                //\n" )
