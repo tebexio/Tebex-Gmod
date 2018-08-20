@@ -11,7 +11,7 @@ TebexCommandRunner.doOfflineCommands = function()
         executedCommands = {}
 
         for key,cmd in pairs(commands) do
-            commandToRun = TebexCommandRunner.buildCommand(cmd["command"], cmd["player"]["name"], cmd["player"]["uuid"])
+            commandToRun = TebexCommandRunner.buildCommand(cmd["command"], cmd["player"]["name"], cmd["player"]["uuid"], cmd["player"]["meta"]["steamID"]);
 
             Tebex.warn("Run command " .. commandToRun)
             game.ConsoleCommand( commandToRun )
@@ -46,7 +46,7 @@ TebexCommandRunner.doOnlineCommands = function(playerPluginId, playerName, playe
         executedCommands = {}
 
         for key,cmd in pairs(commands) do
-            commandToRun = TebexCommandRunner.buildCommand(cmd["command"], playerName, playerId)
+            commandToRun = TebexCommandRunner.buildCommand(cmd["command"], playerName, playerId, response.player.meta.steamID)
 
             Tebex.warn("Run command " .. commandToRun)
             game.ConsoleCommand( commandToRun )
@@ -74,9 +74,10 @@ TebexCommandRunner.doOnlineCommands = function(playerPluginId, playerName, playe
 end
 
 
-TebexCommandRunner.buildCommand = function(cmd, username, id)
+TebexCommandRunner.buildCommand = function(cmd, username, id, steamid)
     cmd = cmd:gsub("{id}", id);
     cmd = cmd:gsub("{username}", username);
+    cmd = cmd:gsub("{steamid}", steamid);
 
     return cmd .. "\n";
 end
