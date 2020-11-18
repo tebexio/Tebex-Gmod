@@ -19,7 +19,7 @@ Tebex.commands["info"] = function(ply, args)
         Tebex.msg("Server prices are in " .. TebexInformation.currency);
         Tebex.msg("Webstore domain: " .. TebexInformation.domain);
     end, function(body)
-        Tebex.msg (body["error_message"])
+        Tebex.msg(body["error_message"])
     end)
 
     apiclient = nil

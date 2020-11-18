@@ -20,7 +20,7 @@ Tebex.commands["secret"] = function(ply, args)
 
         Tebex.msg("Your secret key has been validated! Webstore Name: " .. TebexInformation.name);
     end, function(body)
-        Tebex.msg (body["error_message"])
+        Tebex.msg(body["error_message"])
     end)
 
     apiclient = nil
