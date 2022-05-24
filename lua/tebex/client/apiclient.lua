@@ -38,7 +38,7 @@ function TebexApiClient:get(endpoint, success, failure)
             method = "GET",
             url = self.baseUrl .. endpoint,
             headers = {
-                ['X-Buycraft-Secret'] = apiclient.secret
+                ['X-Tebex-Secret'] = apiclient.secret
             }
         }
     )
@@ -61,7 +61,7 @@ function TebexApiClient:delete(endpoint, success, failure)
             method = "DELETE",
             url = self.baseUrl .. endpoint,
             headers = {
-                ['X-Buycraft-Secret'] = apiclient.secret
+                ['X-Tebex-Secret'] = apiclient.secret
             }
         }
     )
