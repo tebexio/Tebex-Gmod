@@ -9,7 +9,7 @@ function TebexConfig:init()
             buyEnabled = false,
             secret = "",
             buyCommand = "!donate",
-            baseUrl = "https://plugin.buycraft.net"
+            baseUrl = "https://plugin.tebex.io"
         }
     }
 
