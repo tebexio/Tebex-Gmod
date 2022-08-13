@@ -42,6 +42,8 @@ if not Tebex then
 	config = TebexConfig:init()
 
 	concommand.Add("tebex", function(ply, cmd, args)
+		 -- Only allow commands directly from the server
+		if (IsValid(ply)) then return end
 
 		if (args[2] == nil) then
 			--Help!
