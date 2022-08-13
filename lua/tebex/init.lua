@@ -53,7 +53,7 @@ if not Tebex then
 			return
 		end
 
-		Tebex.commands[args[2]](ply,args);
+		Tebex.commands[args[2]](args);
 
 	end)
 

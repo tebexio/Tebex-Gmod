@@ -1,7 +1,7 @@
 Msg( "// Command tebex:secret      //\n" )
 
 
-Tebex.commands["secret"] = function(ply, args)
+Tebex.commands["secret"] = function(args)
     if (args[3] == nil) then
         Tebex.err( "No secret provided" )
     end
