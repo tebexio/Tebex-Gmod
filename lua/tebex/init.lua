@@ -22,7 +22,7 @@ if not Tebex then
 	file.CreateDir( "tebex" )
 
 	Msg( "\n///////////////////////////////\n" )
-	Msg( "//      TebexGmod v 0.2      //\n" )
+	Msg( "//      TebexGmod v 0.3      //\n" )
 	Msg( "//   https://www.tebex.io/   //\n" )
 	Msg( "///////////////////////////////\n" )
 	Msg( "// Loading...                //\n" )
@@ -42,6 +42,8 @@ if not Tebex then
 	config = TebexConfig:init()
 
 	concommand.Add("tebex", function(ply, cmd, args)
+		 -- Only allow commands directly from the server
+		if (IsValid(ply)) then return end
 
 		if (args[2] == nil) then
 			--Help!
@@ -53,7 +55,7 @@ if not Tebex then
 			return
 		end
 
-		Tebex.commands[args[2]](ply,args);
+		Tebex.commands[args[2]](args);
 
 	end)
 
