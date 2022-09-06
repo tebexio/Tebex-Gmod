@@ -12,9 +12,15 @@ TebexCommandRunner.doOfflineCommands = function()
 
         for key,cmd in pairs(commands) do
             commandToRun = TebexCommandRunner.buildCommand(cmd["command"], cmd["player"]["name"], cmd["player"]["uuid"], cmd["player"]["meta"]["steamID"]);
+            commandToRun = commandToRun:Trim()
+
+            -- Prevent escaping console commands
+            if (commandToRun:find(";")) then
+                continue
+            end
 
             Tebex.warn("Run command " .. commandToRun)
-            game.ConsoleCommand( commandToRun )
+            RunConsoleCommand(unpack(string.Explode(" ", commandToRun)))
 
             table.insert(executedCommands, cmd["id"])
             exCount = exCount + 1
@@ -47,9 +53,15 @@ TebexCommandRunner.doOnlineCommands = function(playerPluginId, playerName, playe
 
         for key,cmd in pairs(commands) do
             commandToRun = TebexCommandRunner.buildCommand(cmd["command"], playerName, playerId, response.player.meta.steamID)
+            commandToRun = commandToRun:Trim()
+
+            -- Prevent escaping console commands
+            if (commandToRun:find(";")) then
+                continue
+            end
 
             Tebex.warn("Run command " .. commandToRun)
-            game.ConsoleCommand( commandToRun )
+            RunConsoleCommand(unpack(string.Explode(" ", commandToRun)))
 
             table.insert(executedCommands, cmd["id"])
             exCount = exCount + 1
@@ -79,7 +91,7 @@ TebexCommandRunner.buildCommand = function(cmd, username, id, steamid)
     cmd = cmd:gsub("{username}", username);
     cmd = cmd:gsub("{steamid}", steamid);
 
-    return cmd .. "\n";
+    return cmd;
 end
 
 TebexCommandRunner.deleteCommands = function(commandIds)
